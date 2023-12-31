@@ -1,0 +1,11 @@
+{
+  "name": "forkify-recipe-project",
+  "version": "1.0.0",
+  "description": "From the Udemy course created by Jonas Schmedtmann.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
