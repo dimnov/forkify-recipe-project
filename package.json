@@ -2,11 +2,15 @@
   "name": "forkify-recipe-project",
   "version": "1.0.0",
   "description": "From the Udemy course created by Jonas Schmedtmann.",
-  "main": "index.html",
+  "main": "index.js",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.10.3",
+    "parcel": "^2.10.3"
+  }
 }
