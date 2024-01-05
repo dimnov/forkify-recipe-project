@@ -8,7 +8,7 @@ class RecipeView {
   render(data) {
     this.#data = data;
     const markup = this.#generateMarkup();
-    this.#clear;
+    this.#clear();
     this.#parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
@@ -16,14 +16,14 @@ class RecipeView {
     this.#parentElement.innerHTML = '';
   }
 
-  renderSpinner = () => {
+  renderSpinner() {
     const markup = `
   <div class="spinner">
     <svg>
       <use href="${icons}#icon-loader"></use>
     </svg>
   </div>`;
-    this.#parentElement.innerHTML = '';
+    this.#clear();
     this.#parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
