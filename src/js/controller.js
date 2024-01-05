@@ -22,3 +22,5 @@ const renderSpinner = (parentEl) => {
   parentEl.insertAdjacentHTML('afterbegin', markup);
 }
 
+window.addEventListener('hashchange', showRecipe);
+window.addEventListener('load', showRecipe);
