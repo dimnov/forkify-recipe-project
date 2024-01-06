@@ -1,5 +1,6 @@
-import { state, loadRecipe } from './model.js';
+import { state, loadRecipe, loadSearchResults } from './model.js';
 import recipeView from './views/recipeView.js';
+import searchView from './views/searchView.js';
 
 const controlRecipes = async () => {
   try {
@@ -16,6 +17,19 @@ const controlRecipes = async () => {
   }
 }
 
-(init = () => {
-  recipeView.addHandlerRender(controlRecipes);
-})()
+const controlSearchResults = async () => {
+  try {
+    const query = searchView.getQuery();
+    if (!query) return;
+
+    await loadSearchResults(query);
+  } catch (error) {
+    throw error;
+  }
+}
+
+
+// (init => {
+recipeView.addHandlerRender(controlRecipes);
+searchView.addHandlerSearch(controlSearchResults);
+// })()
