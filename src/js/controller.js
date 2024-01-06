@@ -28,8 +28,5 @@ const controlSearchResults = async () => {
   }
 }
 
-
-// (init => {
 recipeView.addHandlerRender(controlRecipes);
 searchView.addHandlerSearch(controlSearchResults);
-// })()
