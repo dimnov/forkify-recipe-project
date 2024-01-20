@@ -1,4 +1,4 @@
-import { state, loadRecipe, loadSearchResults, getSearchResultsPage } from './model.js';
+import { state, loadRecipe, loadSearchResults, getSearchResultsPage, updateServings } from './model.js';
 import recipeView from './views/recipeView.js';
 import searchView from './views/searchView.js';
 import resultsView from './views/resultsView.js';
@@ -39,11 +39,19 @@ const controlSearchResults = async () => {
   }
 }
 
+const controlServings = (newServings) => {
+  updateServings(newServings);
+
+  recipeView.render(state.recipe);
+}
+
 const controlPagination = (goToPage) => {
   resultsView.render(getSearchResultsPage(goToPage));
   paginationView.render(state.search);
 }
 
 recipeView.addHandlerRender(controlRecipes);
+recipeView.addHandlerUpdateServings(controlServings);
 searchView.addHandlerSearch(controlSearchResults);
 paginationView.addHandlerClick(controlPagination);
+// controlServings();
