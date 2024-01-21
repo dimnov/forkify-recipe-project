@@ -1,4 +1,4 @@
-import { state, loadRecipe, loadSearchResults, getSearchResultsPage, updateServings } from './model.js';
+import { state, loadRecipe, loadSearchResults, getSearchResultsPage, updateServings, addBookmark } from './model.js';
 import recipeView from './views/recipeView.js';
 import searchView from './views/searchView.js';
 import resultsView from './views/resultsView.js';
@@ -52,8 +52,14 @@ const controlPagination = (goToPage) => {
   paginationView.render(state.search);
 }
 
+const controlAddBookmark = () => {
+  addBookmark(state.recipe);
+  recipeView.update(state.recipe);
+}
+
 recipeView.addHandlerRender(controlRecipes);
 recipeView.addHandlerUpdateServings(controlServings);
+recipeView.addHandlerAddBookmark(controlAddBookmark);
 searchView.addHandlerSearch(controlSearchResults);
 paginationView.addHandlerClick(controlPagination);
 // controlServings();
