@@ -24,6 +24,16 @@ class RecipeView extends View {
     })
   }
 
+  addHandlerAddBookmark(handler) {
+    this._parentEl.addEventListener('click', (e) => {
+      const btn = e.target.closest('.btn--bookmark');
+
+      if (!btn) return;
+
+      handler();
+    });
+  }
+
   _generateMarkup() {
     return `
     <figure class="recipe__fig">
