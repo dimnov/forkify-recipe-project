@@ -13,6 +13,7 @@ const controlRecipes = async () => {
     recipeView.renderSpinner();
 
     resultsView.update(getSearchResultsPage());
+
     bookmarksView.update(state.bookmarks);
 
     await loadRecipe(id);
@@ -60,6 +61,11 @@ const controlAddBookmark = () => {
   bookmarksView.render(state.bookmarks);
 }
 
+const controlBookmarks = () => {
+  bookmarksView.render(state.bookmarks);
+}
+
+bookmarksView.addHandlerRender(controlBookmarks);
 recipeView.addHandlerRender(controlRecipes);
 recipeView.addHandlerUpdateServings(controlServings);
 recipeView.addHandlerAddBookmark(controlAddBookmark);

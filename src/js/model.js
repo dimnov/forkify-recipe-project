@@ -95,3 +95,10 @@ export const deleteBookmark = (id) => {
 
   persistBookmarks();
 }
+
+(() => {
+  const storage = localStorage.getItem('bookmarks');
+
+  if (storage)
+    state.bookmarks = JSON.parse(storage);
+})();
