@@ -42,7 +42,7 @@ const controlSearchResults = async () => {
 const controlServings = (newServings) => {
   updateServings(newServings);
 
-  recipeView.render(state.recipe);
+  recipeView.update(state.recipe);
 }
 
 const controlPagination = (goToPage) => {
