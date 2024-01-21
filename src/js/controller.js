@@ -1,4 +1,4 @@
-import { state, loadRecipe, loadSearchResults, getSearchResultsPage, updateServings, addBookmark } from './model.js';
+import { state, loadRecipe, loadSearchResults, getSearchResultsPage, updateServings, addBookmark, deleteBookmark } from './model.js';
 import recipeView from './views/recipeView.js';
 import searchView from './views/searchView.js';
 import resultsView from './views/resultsView.js';
@@ -53,7 +53,10 @@ const controlPagination = (goToPage) => {
 }
 
 const controlAddBookmark = () => {
-  addBookmark(state.recipe);
+  state.recipe.bookmarked
+    ? deleteBookmark(state.recipe.id)
+    : addBookmark(state.recipe);
+
   recipeView.update(state.recipe);
 }
 
