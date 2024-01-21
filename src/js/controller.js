@@ -5,10 +5,6 @@ import resultsView from './views/resultsView.js';
 import paginationView from './views/paginationView.js';
 import bookmarksView from './views/bookmarksView.js';
 
-// if (module.hot) {
-//   module.hot.accept();
-// }
-
 const controlRecipes = async () => {
   try {
     const id = window.location.hash.slice(1);
@@ -17,6 +13,7 @@ const controlRecipes = async () => {
     recipeView.renderSpinner();
 
     resultsView.update(getSearchResultsPage());
+    bookmarksView.update(state.bookmarks);
 
     await loadRecipe(id);
 
@@ -68,4 +65,3 @@ recipeView.addHandlerUpdateServings(controlServings);
 recipeView.addHandlerAddBookmark(controlAddBookmark);
 searchView.addHandlerSearch(controlSearchResults);
 paginationView.addHandlerClick(controlPagination);
-// controlServings();
