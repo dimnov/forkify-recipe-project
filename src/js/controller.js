@@ -4,6 +4,7 @@ import searchView from './views/searchView.js';
 import resultsView from './views/resultsView.js';
 import paginationView from './views/paginationView.js';
 import bookmarksView from './views/bookmarksView.js';
+import addRecipeView from './views/addRecipeView.js';
 
 const controlRecipes = async () => {
   try {
@@ -65,9 +66,14 @@ const controlBookmarks = () => {
   bookmarksView.render(state.bookmarks);
 }
 
+const controlAddRecipe = (newRecipe) => {
+  console.log(newRecipe);
+}
+
 bookmarksView.addHandlerRender(controlBookmarks);
 recipeView.addHandlerRender(controlRecipes);
 recipeView.addHandlerUpdateServings(controlServings);
 recipeView.addHandlerAddBookmark(controlAddBookmark);
 searchView.addHandlerSearch(controlSearchResults);
 paginationView.addHandlerClick(controlPagination);
+addRecipeView.addHandlerUpload(controlAddRecipe);
