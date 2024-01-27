@@ -1,7 +1,7 @@
 import View from "./View.js";
 
 class AddRecipeView extends View {
-  _parentElement = document.querySelector('.upload');
+  _parentEl = document.querySelector('.upload');
   _message = 'Recipe was successfully uploaded :)';
 
   _window = document.querySelector('.add-recipe-window');
@@ -30,7 +30,7 @@ class AddRecipeView extends View {
   }
 
   addHandlerUpload(handler) {
-    this._parentElement.addEventListener('submit', function (e) {
+    this._parentEl.addEventListener('submit', function (e) {
       e.preventDefault();
       const dataArr = [...new FormData(this)];
       const data = Object.fromEntries(dataArr);
