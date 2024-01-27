@@ -5,6 +5,7 @@ import resultsView from './views/resultsView.js';
 import paginationView from './views/paginationView.js';
 import bookmarksView from './views/bookmarksView.js';
 import addRecipeView from './views/addRecipeView.js';
+import { MODAL_CLOSE_SEC } from './config.js';
 
 const controlRecipes = async () => {
   try {
@@ -68,7 +69,17 @@ const controlBookmarks = () => {
 
 const controlAddRecipe = async (newRecipe) => {
   try {
+    addRecipeView.renderSpinner();
+
     await uploadRecipe(newRecipe);
+
+    recipeView.render(state.recipe);
+
+    addRecipeView.renderMessage();
+
+    setTimeout(() => {
+      addRecipeView.toggleWindow()
+    }, MODAL_CLOSE_SEC * 1000);
   } catch (error) {
     addRecipeView.renderError(error.message);
   }
