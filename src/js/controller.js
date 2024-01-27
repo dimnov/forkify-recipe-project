@@ -1,4 +1,4 @@
-import { state, loadRecipe, loadSearchResults, getSearchResultsPage, updateServings, addBookmark, deleteBookmark } from './model.js';
+import { state, loadRecipe, loadSearchResults, getSearchResultsPage, updateServings, addBookmark, deleteBookmark, uploadRecipe } from './model.js';
 import recipeView from './views/recipeView.js';
 import searchView from './views/searchView.js';
 import resultsView from './views/resultsView.js';
@@ -66,8 +66,12 @@ const controlBookmarks = () => {
   bookmarksView.render(state.bookmarks);
 }
 
-const controlAddRecipe = (newRecipe) => {
-  console.log(newRecipe);
+const controlAddRecipe = async (newRecipe) => {
+  try {
+    await uploadRecipe(newRecipe);
+  } catch (error) {
+    addRecipeView.renderError(error.message);
+  }
 }
 
 bookmarksView.addHandlerRender(controlBookmarks);
