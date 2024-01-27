@@ -102,3 +102,36 @@ export const deleteBookmark = (id) => {
   if (storage)
     state.bookmarks = JSON.parse(storage);
 })();
+
+export const uploadRecipe = async (newRecipe) => {
+  try {
+    const ingredients = Object.entries(newRecipe).filter(
+      entry => entry[0].startsWith("ingredient") && entry[1] !== "").map(ing => {
+        const ingArr = ing[1].replaceAll(' ', '').split(',');
+
+        if (ingArr.length !== 3) throw new Error("Wrong ingredient format!");
+
+        const [quantity, unit, description] = ingArr;
+
+        return {
+          quantity: quantity ? Number(quantity) : null,
+          unit,
+          description
+        };
+      });
+
+    const recipe = {
+      title: newRecipe.title,
+      source_url: newRecipe.sourceUrl,
+      image_url: newRecipe.image,
+      publisher: newRecipe.publisher,
+      cooking_time: Number(newRecipe.cookingTime),
+      servings: Number(newRecipe.servings),
+      ingredients,
+    }
+    console.log(recipe);
+  } catch (error) {
+    throw error;
+  }
+
+}
