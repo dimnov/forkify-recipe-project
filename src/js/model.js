@@ -1,5 +1,5 @@
-import { API_URL, RES_PER_PAGE } from "./config.js";
-import { getJSON } from "./helpers.js";
+import { API_URL, KEY, RES_PER_PAGE } from "./config.js";
+import { getJSON, sendJSON } from "./helpers.js";
 
 export const state = {
   recipe: {},
@@ -129,7 +129,9 @@ export const uploadRecipe = async (newRecipe) => {
       servings: Number(newRecipe.servings),
       ingredients,
     }
-    console.log(recipe);
+
+    const data = await sendJSON(`${API_URL}?key=${KEY}`, recipe);
+    console.log(data);
   } catch (error) {
     throw error;
   }
