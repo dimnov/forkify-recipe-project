@@ -1,7 +1,7 @@
 {
   "name": "forkify-recipe-project",
   "version": "1.0.0",
-  "description": "From the Udemy course created by Jonas Schmedtmann.",
+  "description": "Recipe application.",
   "main": "index.js",
   "scripts": {
     "start": "parcel index.html",
